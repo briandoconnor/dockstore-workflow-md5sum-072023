@@ -2,8 +2,10 @@ version: 1.2
 workflows:
   - subclass: WDL
     primaryDescriptorPath: /md5sum.wdl
-    testParameterFiles: /md5sum.wdl.json
+    testParameterFiles: 
+    - /md5sum.wdl.json
     readMePath: /README.md
     authors:
       - name: Brian OConnor
         email: briandoconnor@gmail.com
+
