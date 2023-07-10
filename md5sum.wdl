@@ -1,23 +1,32 @@
-task md5 {
-  File inputFile
+version 1.0
 
-  command {
-    /bin/my_md5sum ${inputFile}
+task md5 {
+  input {
+    File inputFile
   }
 
- output {
-    File value = "md5sum.txt"
- }
+  command {
+    /bin/my_md5sum ~{inputFile}
+  }
 
- runtime {
-   docker: "quay.io/briandoconnor/dockstore-tool-md5sum:1.0.4"
-   cpu: 1
-   memory: "512 MB"
-   disks: "local-disk 10 HDD"
- }
+  output {
+    File value = "md5sum.txt"
+  }
+
+  runtime {
+    docker: "quay.io/briandoconnor/dockstore-tool-md5sum:1.0.4"
+    cpu: 1
+    memory: "512 MB"
+    disks: "local-disk 10 HDD"
+  }
 }
 
 workflow ga4ghMd5 {
- File inputFile
- call md5 { input: inputFile=inputFile }
+  input {
+    File inputFile
+  }
+
+  call md5 {
+    input: inputFile = inputFile
+  }
 }
