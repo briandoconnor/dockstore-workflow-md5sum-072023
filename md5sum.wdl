@@ -6,7 +6,7 @@ task md5 {
   }
 
   command {
-    /bin/my_md5sum ~{inputFile}
+    /bin/my_md5sum ${inputFile}
   }
 
   output {
